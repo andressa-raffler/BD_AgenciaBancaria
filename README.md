@@ -16,3 +16,5 @@ em fornecimento pela Sinqia e Let's Code
 - Otimização de Consultas no Banco de Dados;
 - Backup e Disaster Recovery;
 - Introdução a Banco de Dados Não-Relacional.
+
+Utilizei o Docker para criar um container e rodar uma instância do PostgreSQL.
