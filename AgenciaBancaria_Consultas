@@ -1,0 +1,91 @@
+-- 1 - Listar nome e número das agências.
+SELECT nome, numero FROM agencia;
+
+--2 - Listar ID, número, digíto das contas.
+SELECT id, numero FROM conta;
+
+--3 - Listar ID, número, digíto e tipo da conta.
+SELECT conta.id, conta.numero, tipo_conta.tipo_conta FROM conta, tipo_conta 
+WHERE conta.id_tipo_conta = tipo_conta.id;
+
+--4 - Listar id, número, digito e tipo da conta. Deve ser listado apenas para as contas do tipo 'Conta Corrente'.
+SELECT conta.id, conta.numero, tipo_conta.tipo_conta FROM conta
+LEFT JOIN tipo_conta ON conta.id_tipo_conta = tipo_conta.id WHERE tipo_conta.tipo_conta LIKE 'Corrente';
+
+-- 5 - Listar cliente(nome, cpf), conta (número) dos clientes.
+SELECT cliente.nome, cliente.cpf, conta.numero FROM cliente
+LEFT JOIN conta ON cliente.id = conta.id_cliente;
+
+--6 - Listar cliente(nome, cpf), conta(agência, número e digito) dos clientes.
+SELECT cliente.nome, cliente.cpf, agencia.nome, conta.numero FROM cliente
+INNER JOIN conta ON cliente.id = conta.id_cliente
+INNER JOIN agencia ON agencia.id = conta.id_agencia;
+
+--7 - Listar cliente(nome, cpf), conta(agência, número e dígito). Deve ser listado apenas dos clientes que residem na cidade de 'São Paulo'.
+SELECT cliente.nome, cliente.cpf, agencia.nome, conta.numero, cidade.descricao FROM cliente
+INNER JOIN conta ON cliente.id = conta.id_cliente
+INNER JOIN agencia ON agencia.id = conta.id_agencia
+INNER JOIN endereco ON cliente.id_endereco = endereco.id
+INNER JOIN cidade ON endereco.id_cidade = cidade.id
+WHERE cidade.descricao LIKE 'sao paulo';
+
+--8 - Listar cliente(nome, cpf), quantidade de contas dos clientes.
+SELECT cliente.nome, cliente.cpf, COUNT(conta.id_cliente) as qtd_conta
+	FROM cliente 
+	INNER JOIN conta ON cliente.id = conta.id_cliente
+	GROUP BY cliente.nome, cliente.cpf;
+
+--9 - Listar conta(agência, número e digito), operação(tipo, data, valor) das contas. Nesta listagem deve ser considerado apenas as operações do ano de 2022.
+SELECT agencia.nome, conta.numero, tipo_transacao.tipo_transacao, transacao.data, transacao.valor, transacao.data FROM conta
+LEFT JOIN agencia ON conta.id_agencia = agencia.id
+LEFT JOIN transacao ON conta.id = transacao.id_conta_origem
+LEFT JOIN tipo_transacao ON transacao.id_tipo_transacao = tipo_transacao.id
+WHERE transacao.data BETWEEN '2022-01-01'AND '2022-12-31';
+
+-- 10 - Listar a conta e a quantidade de operações que ocorrem no ano de 2022.
+	SELECT conta.numero, COUNT(transacao.id) as qtd_transacao
+	FROM transacao 
+	LEFT JOIN conta ON transacao.id_conta_origem = conta.id
+	WHERE transacao.data BETWEEN '2022-01-01'AND '2022-12-31'
+	GROUP BY conta.numero;
+
+--11 - Listar as contas independente de ter tido ou não operações. 
+--Porém, para as que tiveram, deve ser carregado as operações das mesmas.
+SELECT conta.numero, tipo_transacao.tipo_transacao FROM conta
+	LEFT JOIN transacao ON conta.id = transacao.id_conta_origem
+	LEFT JOIN tipo_transacao ON transacao.id_tipo_transacao = tipo_transacao.id;
+
+
+--12 - Listar todas as contas que não tiveram operação no ano de 2022.
+SELECT DISTINCT conta.numero FROM conta
+	WHERE conta.id NOT IN (
+		SELECT transacao.id_conta_origem FROM transacao 
+		WHERE transacao.data BETWEEN '2022-01-01'AND '2022-12-31'
+	);
+
+--13 - Listar cliente(nome, cpf), conta(agência, número, dígito) e também o saldo atual.
+SELECT cliente.nome, cliente.cpf, agencia.nome, conta.numero, SUM(transacao.valor) as saldo FROM cliente
+	LEFT JOIN conta ON cliente.id = conta.id_cliente
+	LEFT JOIN agencia ON conta.id_agencia = agencia.id
+	LEFT JOIN transacao ON transacao.id_conta_origem = conta.id
+	GROUP BY  cliente.nome, cliente.cpf, agencia.nome, conta.numero;
+
+14 - Listar cliente(nome e cpf), conta(agência, número e dígito) e também o saldo. Neste exercício deve ser listador apenas os clientes com saldo negativo.
+SELECT cliente.nome, cliente.cpf, agencia.nome, conta.numero, SUM(transacao.valor) as saldo FROM cliente
+	LEFT JOIN conta ON cliente.id = conta.id_cliente
+	LEFT JOIN agencia ON conta.id_agencia = agencia.id
+	LEFT JOIN transacao ON transacao.id_conta_origem = conta.id
+	GROUP BY  cliente.nome, cliente.cpf, agencia.nome, conta.numero
+	HAVING SUM(transacao.valor) <0 ;
+
+
+--15 - Listar as operações das contas. 
+--Na listagem deve conter a conta (agencia, número e digito), tipo da operação, valor, data, operação de origem (quando existir).
+SELECT transacao.id, agencia.nome, conta.numero, tipo_transacao.tipo_transacao, transacao.valor, transacao.data FROM conta
+	LEFT JOIN agencia ON agencia.id = conta.id_agencia
+	LEFT JOIN transacao ON conta.id = transacao.id_conta_origem
+	LEFT JOIN tipo_transacao ON transacao.id_tipo_transacao = tipo_transacao.id;
+
+16 - Crie uma view para exibir o saldo das contas.
+
+17 - Crie uma view para exibir o histórico de transações.

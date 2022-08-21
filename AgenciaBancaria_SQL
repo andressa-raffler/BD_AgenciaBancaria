@@ -19,6 +19,7 @@ CREATE TABLE agencia(
 	id SERIAL NOT NULL,
 	numero CHARACTER(6) NOT NULL,
 	id_endereco INTEGER,
+	nome VARCHAR(80),
 	PRIMARY KEY (id),
 	CONSTRAINT uc_numero UNIQUE (numero)
 );
@@ -56,6 +57,8 @@ CREATE TABLE transacao(
 	id_conta_origem INTEGER NOT NULL,
 	id_conta_destino INTEGER,
 	id_tipo_transacao INTEGER NOT NULL,
+	data DATE NOT NULL,
+	valor NUMERIC (12,6),
 	PRIMARY KEY (id),
 	CONSTRAINT uc_numero_transacao UNIQUE (numero_transacao)
 );
@@ -107,7 +110,6 @@ ALTER TABLE transacao
 	FOREIGN KEY (id_tipo_transacao) REFERENCES tipo_transacao(id);
 	
 
-	
 
 ----------------------------------------------------------------------
 
@@ -221,156 +223,155 @@ INSERT INTO conta (numero, senha, id_agencia, id_cliente, id_tipo_conta) VALUES
 INSERT INTO tipo_transacao (tipo_transacao) VALUES
 ('Saque'),('Depósito'),('PIX'),('TED'),('DOC');
 
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (47188916388, 49, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (86437152839, 9, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (73476842274, 6, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (59935484721, 29, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (33017014561, 30, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (14325662403, 15, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (69027592082, 4, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (23549915832, 2, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (3788251729, 10, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (62955143101, 7, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (34412159358, 23, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (2621986192, 40, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (71034941285, 37, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (34708243018, 43, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (85912287204, 43, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (45910215649, 49, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (3140354142, 9, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (50721157287, 2, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (75391220881, 3, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (1849010328, 3, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (35554388319, 36, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (92773266331, 4, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (80938494134, 1, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (1990625715, 12, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (49228128392, 23, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (38202048302, 49, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (61722446538, 14, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (4797883441, 24, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (77350416460, 24, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (63120896519, 2, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (28767044928, 49, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (61539958512, 7, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (59928116054, 6, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (75215683456, 18, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (59113669946, 23, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (96572262282, 50, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (49815653881, 3, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (46073896382, 43, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (72309613490, 19, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (8089731013, 31, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (83371337697, 5, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (99499583787, 29, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (89142642525, 2, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (69606539675, 43, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (25634047635, 48, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (81705369501, 33, 1);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (73134088344, 15, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (44940936965, 19, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (83024794758, 40, 2);
-insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao) values (19732445108, 26, 2);
 
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (60396549513, 3, 25, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (96575107197, 30, 47, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (52748156748, 24, 15, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (96487299465, 48, 15, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (16252963422, 41, 41, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (19464228074, 35, 24, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (1948566051, 49, 18, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (90315823904, 48, 37, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (89300963307, 32, 5, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (80892466107, 8, 24, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (79877119177, 39, 3, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (87561913521, 43, 14, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (76131278348, 43, 13, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (1218869485, 43, 34, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (65012459251, 13, 3, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (51566477811, 15, 30, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (19162718444, 17, 17, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (59834357037, 27, 46, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (5130532479, 4, 30, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (56138079070, 1, 15, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (72146575755, 23, 10, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (32590393235, 42, 48, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (44441949842, 14, 50, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (39117075066, 16, 12, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (4453186668, 44, 8, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (36233214881, 10, 7, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (61677862276, 1, 34, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (57251029166, 50, 5, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (33425429273, 9, 38, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (89839837633, 2, 18, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (2043059636, 21, 23, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (98111171716, 20, 16, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (58422007308, 23, 26, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (98867343228, 39, 4, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (86406272180, 25, 48, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (67673046850, 12, 33, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (26720125256, 29, 25, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (46188205008, 40, 31, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (88790931995, 25, 40, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (27893680463, 37, 36, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (38211533169, 34, 2, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (53268576982, 36, 44, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (62055663340, 40, 13, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (51564167680, 49, 28, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (89490572021, 16, 45, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (84833647277, 25, 28, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (1078841307, 31, 32, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (58596783006, 50, 4, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (66845226816, 33, 27, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (25676942204, 34, 48, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (65052686770, 13, 34, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (300601686, 27, 24, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (28430230820, 4, 10, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (44930158218, 1, 7, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (17170050534, 27, 4, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (70476419536, 26, 31, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (89720576664, 21, 41, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (21197710634, 13, 16, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (47243347150, 34, 3, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (15922265705, 49, 31, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (16066045864, 20, 13, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (43680423245, 4, 38, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (29667487659, 34, 13, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (6022991157, 32, 43, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (72344892425, 2, 6, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (27016063135, 43, 44, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (61482227050, 48, 8, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (56453676916, 46, 18, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (520560594, 20, 9, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (7435740161, 4, 49, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (94001865380, 27, 48, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (15005822517, 10, 22, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (11678889896, 2, 28, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (90165316369, 38, 41, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (73543530230, 50, 40, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (59338879072, 12, 40, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (11072054706, 23, 49, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (98527751838, 4, 9, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (88612664677, 4, 8, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (46331743713, 19, 16, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (69337975470, 4, 10, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (23686039686, 12, 45, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (17409444261, 50, 10, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (75276314842, 8, 10, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (29951174439, 18, 19, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (82361177691, 15, 26, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (20480468284, 15, 42, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (3326526627, 32, 5, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (61068351291, 34, 4, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (28381399811, 21, 12, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (25328040354, 48, 42, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (56667517337, 33, 25, 3);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (97929692694, 10, 20, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (78170614328, 14, 19, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (97534176191, 23, 38, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (49514381258, 8, 23, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (98151245755, 33, 27, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (28078636280, 13, 6, 5);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (8148900311, 21, 28, 4);
-insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao) values (5381413238, 32, 20, 3);
+UPDATE agencia 
+	SET nome = 'Agencia 1'
+	WHERE id = 7;
+	
+UPDATE agencia 
+	SET nome = 'Agencia 2'
+	WHERE id = 8;
+	
+UPDATE agencia 
+	SET nome = 'Agencia 3'
+	WHERE id = 9;
+	
+UPDATE agencia 
+	SET nome = 'Agencia 4'
+	WHERE id = 10;
+	
+UPDATE agencia 
+	SET nome = 'Agencia 5'
+	WHERE id = 11;
 
-
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5733724345, 105, 140, 4, 887.01, '2017-03-30');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5871644665, 121, 145, 3, -139.24, '2012-02-15');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9214268177, 103, 142, 3, -1086.27, '2005-10-25');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5262857775, 118, 117, 4, 1016.85, '2004-05-23');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4630698536, 148, 145, 5, -695.22, '2014-03-26');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6187433432, 133, 111, 4, 1027.32, '2007-11-16');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8977777388, 146, 122, 4, 926.52, '2006-09-02');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1609436145, 109, 145, 5, 761.07, '2020-10-02');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4071314279, 120, 106, 5, 151.11, '2022-04-15');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9324662367, 136, 134, 5, 1468.63, '2008-05-05');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4320766761, 141, 139, 3, 715.97, '2017-05-02');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (2522029167, 102, 107, 5, 745.45, '2012-10-08');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7629387588, 129, 125, 3, -1357.77, '2009-05-13');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5728974794, 139, 126, 5, 73.82, '2013-04-20');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9522679003, 138, 126, 3, 283.11, '2021-02-16');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8935609284, 111, 117, 4, 361.64, '2003-05-09');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5518964261, 141, 117, 3, 266.23, '2016-11-02');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (2074607353, 137, 132, 5, 845.28, '2006-08-12');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6559754505, 106, 128, 5, 1298.44, '2006-01-28');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8506217673, 118, 131, 4, 777.8, '2010-02-20');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9052506949, 132, 146, 3, -1182.17, '2007-12-16');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (2937926907, 103, 150, 5, 1022.71, '2017-07-15');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3753662259, 117, 130, 4, 290.03, '2020-07-15');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7329308759, 132, 146, 3, 540.12, '2005-07-27');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8995529617, 142, 122, 4, 1155.47, '2017-10-05');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (2045981446, 128, 122, 4, 1113.31, '2005-09-02');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3436021236, 119, 126, 3, -1375.99, '2012-01-24');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9581186778, 105, 111, 3, 272.44, '2017-04-05');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (2651896882, 134, 135, 4, 1466.56, '2021-08-06');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5587288224, 117, 140, 5, 783.07, '2016-04-01');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9402542034, 135, 131, 3, 1080.89, '2015-01-11');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8862331204, 133, 123, 4, 181.63, '2010-04-23');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4873653968, 126, 125, 4, -356.73, '2015-08-15');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4131588590, 101, 140, 4, 1075.13, '2007-06-28');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7158873654, 104, 131, 4, 1024.42, '2015-09-17');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6252741104, 104, 140, 4, 374.97, '2011-08-18');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8983259034, 150, 145, 5, 815.54, '2009-05-14');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6064559469, 119, 143, 4, 322.19, '2006-02-11');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7763149850, 131, 140, 4, 712.33, '2022-03-23');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8459773560, 129, 118, 5, -970.95, '2005-02-28');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7129492735, 125, 134, 3, 1276.33, '2013-01-20');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3725953967, 104, 116, 5, 1332.48, '2004-10-26');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5118859661, 122, 120, 3, 649.89, '2012-05-07');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (2170590435, 144, 127, 4, 612.61, '2009-10-21');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1248630288, 128, 140, 5, 127.01, '2010-08-20');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7102156532, 136, 127, 4, -945.27, '2017-12-29');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3249959702, 113, 147, 5, 1306.71, '2005-08-23');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4701821080, 140, 104, 4, 341.21, '2012-02-13');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8662954677, 149, 143, 4, 601.55, '2020-11-25');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1166593872, 150, 101, 4, 32.04, '2009-06-17');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1580253978, 130, 149, 3, 1420.65, '2013-03-22');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4098825555, 145, 111, 4, -1244.52, '2005-02-13');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1871958909, 127, 106, 4, 1255.85, '2017-04-24');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8083242513, 126, 150, 5, 248.96, '2018-06-17');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3802542975, 116, 103, 4, 1447.47, '2012-05-01');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4227749231, 147, 120, 5, 1160.98, '2012-05-07');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1913591681, 115, 116, 5, 145.24, '2021-07-29');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9302390668, 146, 101, 4, -1343.87, '2004-11-30');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7927448750, 122, 142, 4, 1252.14, '2019-12-26');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1637481720, 127, 123, 4, 860.2, '2020-06-03');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9089985105, 133, 137, 5, 285.91, '2013-09-14');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9612767190, 133, 150, 3, 1202.76, '2004-01-18');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8845733661, 109, 111, 4, -835.27, '2009-08-15');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6854531029, 126, 112, 5, 380.41, '2005-03-27');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3234352248, 138, 101, 4, 417.65, '2006-09-03');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6646602408, 143, 133, 3, 789.87, '2003-03-07');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (9201179153, 107, 108, 4, 835.58, '2019-04-28');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1770118334, 129, 108, 3, 1188.24, '2017-01-15');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7136569552, 104, 127, 4, -1262.75, '2018-09-10');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7069721024, 148, 117, 4, 956.69, '2012-03-09');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3250906110, 104, 145, 3, 151.33, '2013-09-17');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6056260000, 133, 128, 5, 1244.72, '2019-06-27');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6924820231, 118, 137, 5, 1342.97, '2008-11-09');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5902363805, 123, 139, 4, -795.2, '2019-09-29');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7442714646, 136, 115, 5, 1343.69, '2021-06-20');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6712607002, 104, 107, 5, 1181.78, '2019-07-28');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1647353413, 136, 121, 4, 709.38, '2005-08-12');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1354797028, 139, 109, 4, 964.53, '2006-08-25');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5765304997, 139, 121, 5, -275.09, '2009-09-06');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6573884322, 133, 145, 4, 802.38, '2011-10-20');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1178199564, 140, 143, 3, 232.69, '2004-02-12');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7029891161, 111, 123, 3, 451.51, '2015-02-22');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5930721961, 112, 133, 3, -229.76, '2007-12-29');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3210619822, 104, 115, 3, -1418.74, '2018-08-26');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7301397347, 150, 114, 3, -1369.8, '2008-04-11');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4395142447, 109, 103, 4, -468.11, '2003-07-10');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7186552646, 119, 119, 4, 17.83, '2021-10-22');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (2753881838, 129, 137, 5, 607.5, '2004-02-23');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6197412892, 150, 108, 4, 28.37, '2008-01-04');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7201237488, 133, 135, 5, 630.15, '2005-05-29');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5799056165, 138, 127, 4, 639.06, '2003-10-29');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (7055075223, 134, 125, 3, 1137.9, '2008-02-24');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (6449188300, 125, 126, 4, 1021.72, '2016-07-16');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3804315478, 111, 146, 4, 378.25, '2017-12-09');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (1212547886, 101, 148, 5, -1107.93, '2019-03-09');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (5013483137, 127, 125, 5, 1407.41, '2017-08-05');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (4999351637, 127, 138, 3, 1176.66, '2021-08-31');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (2159641093, 110, 114, 3, 243.23, '2009-02-17');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (3654925189, 148, 114, 3, 868.56, '2012-12-01');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (2586553737, 106, 123, 5, 944.03, '2008-03-05');
+insert into transacao (numero_transacao, id_conta_origem, id_conta_destino, id_tipo_transacao, valor, data) values (8893209260, 117, 102, 3, 1198.9, '2004-09-18');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (6261720326, 122, 1, -1481.79, '2005-12-10');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (5726667503, 150, 1, -684.3, '2015-12-04');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (6896596994, 141, 1, -670.04, '2008-06-09');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (6236620883, 105, 1, -903.43, '2012-01-04');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (3955084217, 104, 1, -259.91, '2008-02-26');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (5843801458, 132, 1, -610.43, '2018-03-23');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (4874230994, 144, 1, -825.47, '2017-08-19');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (2074443923, 135, 1, -1133.45, '2018-05-16');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (4235660889, 125, 1, -824.01, '2021-10-06');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (2574885206, 144, 1, -1355.22, '2018-04-07');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (4669410273, 135, 1, -633.97, '2003-11-26');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (6074428141, 134, 1, -1442.35, '2017-06-29');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (7324296524, 119, 1, -764.68, '2003-07-18');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (6124831961, 150, 1, -377.36, '2007-01-18');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (7165749707, 113, 1, -834.11, '2006-10-04');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (6162926826, 129, 2, 741.0, '2015-05-15');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (6756366923, 106, 2, 1081.06, '2019-10-25');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (2530617092, 134, 2, 778.11, '2006-07-05');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (4346418012, 110, 2, 1480.59, '2017-02-24');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (1714641744, 107, 2, 504.51, '2009-12-02');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (7508086579, 110, 2, 1481.89, '2011-08-08');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (1139815902, 135, 2, 962.36, '2011-02-10');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (8712823517, 143, 2, 1259.18, '2015-02-14');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (1510163980, 149, 2, 647.5, '2020-10-19');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (3039834664, 138, 2, 1161.41, '2008-10-30');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (7625442492, 147, 2, 657.64, '2007-04-16');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (9519369130, 107, 2, 246.77, '2006-03-31');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (9722273586, 137, 2, 930.56, '2021-07-28');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (1992023153, 118, 2, 977.35, '2012-07-30');
+insert into transacao (numero_transacao, id_conta_origem, id_tipo_transacao, valor, data) values (9527744058, 109, 2, 1098.31, '2006-02-26');
